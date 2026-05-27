@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kabir Gohgari — Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0e1117;
+  --bg2:#151b26;
+  --bg3:#1c2333;
+  --bg4:#222d40;
+  --blue:#4d9de0;
+  --blue2:#6ab0eb;
+  --blue-dim:#2a5a8a;
+  --blue-glow:rgba(77,157,224,0.12);
+  --text:#f0f4f8;
+  --text2:#b8c8d8;
+  --text3:#6a88a8;
+  --border:rgba(77,157,224,0.3);
+  --border2:rgba(77,157,224,0.12);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,17,23,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border2);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.1rem;letter-spacing:0.08em;color:var(--text)}
+.nav-logo span{color:var(--blue)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--blue2)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text2);transition:all 0.3s}
+@media(max-width:640px){
+  .nav-links{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(14,17,23,0.98);flex-direction:column;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid var(--border2)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 2rem}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border2) 1px,transparent 1px),linear-gradient(90deg,var(--border2) 1px,transparent 1px);background-size:60px 60px;opacity:0.6}
+.hero-fade{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,transparent 30%,var(--bg) 80%)}
+.hero-content{position:relative;max-width:1100px;margin:0 auto;width:100%;padding-top:56px}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--blue);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--blue)}
+.hero-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(3.5rem,8vw,7rem);line-height:0.95;letter-spacing:-0.01em;color:var(--text);margin-bottom:0.5rem}
+.hero-name .dim{color:var(--text3)}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:clamp(1.5rem,4vw,2.8rem);color:var(--blue);letter-spacing:0.02em;margin-bottom:2rem}
+.hero-desc{max-width:560px;font-size:1rem;color:var(--text2);line-height:1.8;margin-bottom:2.5rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:3rem}
+.tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--blue);border:1px solid var(--blue-dim);padding:0.35rem 0.75rem;border-radius:2px;text-transform:uppercase}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bg);background:var(--blue);padding:0.75rem 2rem;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.2s}
+.btn-primary:hover{background:var(--blue2)}
+.btn-outline{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);background:transparent;padding:0.75rem 2rem;border:1px solid var(--blue-dim);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s}
+.btn-outline:hover{border-color:var(--blue);background:var(--blue-glow)}
+.hero-stats{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2rem;padding-top:56px}
+.stat-item{text-align:right}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:2.5rem;color:var(--blue);line-height:1}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.25rem}
+@media(max-width:768px){.hero-stats{display:none}}
+
+/* ── SECTIONS ── */
+section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--blue);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem}
+.section-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--blue)}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:0.01em;margin-bottom:3rem;line-height:1.1}
+.divider{max-width:1100px;margin:0 auto;height:1px;background:var(--border2)}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-text p{color:var(--text2);margin-bottom:1.25rem;font-size:0.975rem;line-height:1.85}
+.about-text p strong{color:var(--text);font-weight:500}
+.about-highlight{border-left:2px solid var(--blue);padding-left:1.25rem;margin:2rem 0;border-radius:0}
+.about-highlight p{color:var(--text);font-size:1.05rem;font-style:italic;font-weight:300}
+.about-side{display:flex;flex-direction:column;gap:1.5rem}
+.about-card{background:var(--bg3);border:1px solid var(--border2);padding:1.25rem 1.5rem}
+.about-card-title{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:0.75rem}
+.about-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.about-card li{font-size:0.875rem;color:var(--text2);display:flex;align-items:flex-start;gap:0.6rem}
+.about-card li::before{content:'›';color:var(--blue);font-weight:600;flex-shrink:0}
+
+/* ── PROJECTS ── */
+.projects-grid{display:flex;flex-direction:column;gap:2px}
+.project-card{background:var(--bg2);border:1px solid var(--border2);display:grid;grid-template-columns:1fr 2fr;overflow:hidden;transition:border-color 0.3s}
+.project-card:hover{border-color:var(--blue-dim)}
+@media(max-width:768px){.project-card{grid-template-columns:1fr}}
+.project-visual{background:var(--bg3);padding:2rem;display:flex;align-items:center;justify-content:center;min-height:240px;position:relative;overflow:hidden}
+
+/* ── IMAGE SUPPORT ── */
+.project-visual img{width:100%;height:100%;object-fit:contain;max-height:220px;display:block}
+/* If no image, show placeholder */
+.project-visual .placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px}
+
+.project-num{position:absolute;top:1rem;left:1rem;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text3);letter-spacing:0.1em}
+.project-content{padding:2.5rem 3rem;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:768px){.project-content{padding:1.5rem}}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem}
+.project-tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--text3);border:1px solid var(--border2);padding:0.2rem 0.6rem;border-radius:2px}
+.project-title{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.6rem;letter-spacing:0.02em;margin-bottom:0.75rem;line-height:1.2;color:var(--text)}
+.project-subtitle{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem}
+.project-desc{font-size:0.9rem;color:var(--text2);line-height:1.8;margin-bottom:1.5rem}
+.project-specs{display:flex;flex-wrap:wrap;gap:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border2)}
+.spec{display:flex;flex-direction:column;gap:0.2rem}
+.spec-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase}
+.spec-value{font-size:0.85rem;color:var(--text);font-weight:500}
+
+/* CAD placeholder frame */
+.cad-frame{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;position:relative;border:1px solid var(--border)}
+.cad-corner{position:absolute;width:12px;height:12px;border-color:var(--blue-dim);border-style:solid}
+.cad-corner.tl{top:8px;left:8px;border-width:1px 0 0 1px}
+.cad-corner.tr{top:8px;right:8px;border-width:1px 1px 0 0}
+.cad-corner.bl{bottom:8px;left:8px;border-width:0 0 1px 1px}
+.cad-corner.br{bottom:8px;right:8px;border-width:0 1px 1px 0}
+.cad-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text3);letter-spacing:0.12em;text-align:center;padding:0 1rem}
+.cad-title{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:1rem;color:var(--blue);letter-spacing:0.08em;margin-bottom:0.5rem;text-align:center}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border2)}
+.skill-block{background:var(--bg2);padding:2rem;position:relative;overflow:hidden}
+.skill-block::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--blue);transition:height 0.4s ease}
+.skill-block:hover::before{height:100%}
+.skill-icon{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.5rem;color:var(--blue);margin-bottom:0.75rem;letter-spacing:0.02em}
+.skill-name{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:1rem;letter-spacing:0.05em;color:var(--text);margin-bottom:0.5rem}
+.skill-desc{font-size:0.8rem;color:var(--text2);line-height:1.6}
+.skill-level{margin-top:1rem;height:2px;background:var(--bg4)}
+.skill-fill{height:100%;background:var(--blue);transition:width 0.6s ease}
+
+/* ── EXPERIENCE ── */
+.exp-grid{display:grid;grid-template-columns:1fr 2fr;gap:3rem}
+@media(max-width:768px){.exp-grid{grid-template-columns:1fr}}
+.exp-item{display:flex;gap:1.5rem;position:relative}
+.exp-line{display:flex;flex-direction:column;align-items:center}
+.exp-dot{width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:5px}
+.exp-connector{flex:1;width:1px;background:var(--border);margin:4px 0}
+.exp-body{padding-bottom:2.5rem}
+.exp-period{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem}
+.exp-role{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:1.1rem;color:var(--text);margin-bottom:0.25rem}
+.exp-org{font-size:0.8rem;color:var(--text3);margin-bottom:0.75rem}
+.exp-desc{list-style:none;font-size:0.85rem;color:var(--text2);line-height:1.75}
+.exp-desc li{margin-bottom:0.4rem;padding-left:1rem;position:relative}
+.exp-desc li::before{content:'—';position:absolute;left:0;color:var(--blue-dim)}
+.exp-right{background:var(--bg3);border:1px solid var(--border2);padding:2rem}
+.certs-title{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--blue);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.25rem}
+.cert-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border2)}
+.cert-item:last-child{border-bottom:none}
+.cert-badge{width:36px;height:36px;background:var(--blue-glow);border:1px solid var(--blue-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.75rem;color:var(--blue);letter-spacing:0.05em}
+.cert-name{font-size:0.875rem;color:var(--text);font-weight:500;margin-bottom:0.2rem}
+.cert-issuer{font-size:0.75rem;color:var(--text3)}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-intro{font-size:1rem;color:var(--text2);line-height:1.8;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:1rem}
+.contact-link{display:flex;align-items:center;gap:1rem;color:var(--text2);text-decoration:none;font-size:0.9rem;padding:1rem 1.25rem;background:var(--bg3);border:1px solid var(--border2);transition:all 0.2s}
+.contact-link:hover{border-color:var(--blue-dim);color:var(--text)}
+.contact-link-icon{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;min-width:64px}
+.contact-right{background:var(--bg3);border:1px solid var(--border2);padding:2rem}
+.contact-right label{display:block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;margin-top:1.25rem}
+.contact-right label:first-of-type{margin-top:0}
+.contact-right input,.contact-right textarea{width:100%;background:var(--bg2);border:1px solid var(--border2);color:var(--text);padding:0.7rem 0.85rem;font-family:'Barlow',sans-serif;font-size:0.875rem;outline:none;resize:none;transition:border-color 0.2s}
+.contact-right input:focus,.contact-right textarea:focus{border-color:var(--blue-dim)}
+.contact-right textarea{height:100px}
+.contact-right .btn-primary{margin-top:1.25rem;width:100%;text-align:center;font-size:0.85rem}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border2);padding:2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text3);letter-spacing:0.1em}
+.footer-tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--blue);letter-spacing:0.1em}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════
+     NAV
+     ════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">K<span>.</span>GOHGARI</div>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about" onclick="document.querySelector('.nav-links').classList.remove('open')">About</a></li>
+      <li><a href="#projects" onclick="document.querySelector('.nav-links').classList.remove('open')">Projects</a></li>
+      <li><a href="#skills" onclick="document.querySelector('.nav-links').classList.remove('open')">Skills</a></li>
+      <li><a href="#experience" onclick="document.querySelector('.nav-links').classList.remove('open')">Experience</a></li>
+      <li><a href="#contact" onclick="document.querySelector('.nav-links').classList.remove('open')">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════
+     HERO
+     ════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-fade"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Mechanical Engineering Portfolio</div>
+    <!-- ✏️ UPDATE: Your name (already set) -->
+    <div class="hero-name">KABIR<br><span class="dim">GOHGARI</span></div>
+    <!-- ✏️ UPDATE: Your year / university as it changes -->
+    <div class="hero-title">Second Year · University of Windsor</div>
+    <!-- ✏️ UPDATE: This tagline as you gain more experience -->
+    <p class="hero-desc">
+      Aspiring mechanical engineer with hands-on experience in CAD modeling, fabrication, automotive systems, and electromechanical design. Building toward a career in automotive and manufacturing engineering in the Windsor–Detroit corridor.
+    </p>
+    <!-- ✏️ UPDATE: Add/remove tags as your skills grow -->
+    <div class="hero-tags">
+      <span class="tag">AutoCAD</span>
+      <span class="tag">Autodesk Inventor</span>
+      <span class="tag">Fabrication</span>
+      <span class="tag">Automotive Systems</span>
+      <span class="tag">3D Printing</span>
+      <span class="tag">Arduino</span>
+      <span class="tag">Welding</span>
+      <!-- ✏️ ADD: SolidWorks once you learn it -->
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Contact Me</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <!-- ✏️ UPDATE: These numbers as you complete more projects -->
+    <div class="stat-item">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">CAD Projects</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Yrs Shop Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Part Assembly</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════
+     ABOUT
+     ════════════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">01 — About</div>
+    <div class="about-grid">
+      <!-- ✏️ UPDATE: Edit this bio text freely -->
+      <div class="about-text">
+        <p>I have been drawn to building things for as long as I can remember. Growing up, I was the kid who took apart appliances to understand how they worked, rewired electronics from hobby kits, and spent weekends diagnosing problems on family vehicles. That instinct to understand and improve mechanical systems is what led me to mechanical engineering.</p>
+        <p>I am a second-year Mechanical Engineering student at the <strong>University of Windsor</strong> — one of Canada's top engineering programs, located at the heart of Canada's automotive corridor. Windsor's proximity to Detroit and its deep ties to Magna, Stellantis, and the broader OEM supplier network was no accident in my choice of school.</p>
+        <p>Outside of academics, I attend car shows across Ontario, follow the automotive industry closely, and have built hands-on skills that most engineering students don't develop until years into their careers.</p>
+        <div class="about-highlight">
+          <p>"I want to build things that matter — systems that are faster, safer, and more efficient. That's what drew me to automotive engineering, and that's what drives me every day."</p>
+        </div>
+      </div>
+      <div class="about-side">
+        <!-- ✏️ UPDATE: Add courses each semester -->
+        <div class="about-card">
+          <div class="about-card-title">Education</div>
+          <ul>
+            <li>BEng Mechanical Engineering — University of Windsor</li>
+            <li>Expected Graduation: 2028</li>
+            <li>Relevant: Eng. Graphics, Cornerstone Design, Calculus, Physics</li>
+          </ul>
+        </div>
+        <!-- ✏️ UPDATE: Add SolidWorks, MATLAB, etc. as you learn them -->
+        <div class="about-card">
+          <div class="about-card-title">Technical Skills</div>
+          <ul>
+            <li>AutoCAD — Technical Drawings &amp; Assemblies</li>
+            <li>Autodesk Inventor — 3D Parametric Modeling</li>
+            <li>3D Printing — FDM Part Design &amp; Fabrication</li>
+            <li>Arduino / Embedded Systems</li>
+            <li>MIG &amp; Oxy-Acetylene Welding</li>
+            <li>Plasma Cutting</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">Automotive Hands-On</div>
+          <ul>
+            <li>Brake system service &amp; tie rod repair</li>
+            <li>Engine fundamentals &amp; maintenance</li>
+            <li>Two-post &amp; ramp hoist operation</li>
+            <li>OBD-II diagnostics &amp; scan tool use</li>
+            <li>Tire mounting, balancing &amp; rotation</li>
+            <li>Minor transmission service</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════
+     PROJECTS
+     ════════════════════════════════ -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">02 — Projects</div>
+    <div class="section-title">Engineering Work</div>
+    <div class="projects-grid">
+
+      <!-- ══ PROJECT 1 ══
+           ✏️ HOW TO ADD YOUR IMAGE:
+           1. Put your robot photo in the same folder as this file.
+              Name it: robot-photo.jpg
+           2. Replace the <div class="placeholder"> block below
+              with: <img src="robot-photo.jpg" alt="Automated catapult robot">
+      -->
+      <div class="project-card">
+        <div class="project-visual" style="background:#131c2a">
+          <div class="project-num">01</div>
+
+          <!-- REPLACE THIS BLOCK with <img src="robot-photo.jpg" alt="..."> once you have the photo ready -->
+          <div class="placeholder">
+            <div class="cad-frame">
+              <div class="cad-corner tl"></div><div class="cad-corner tr"></div>
+              <div class="cad-corner bl"></div><div class="cad-corner br"></div>
+              <div class="cad-title">CATAPULT ROBOT</div>
+              <div class="cad-label">Add robot-photo.jpg here<br>See comment above</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-tag">Autodesk Inventor</span>
+            <span class="project-tag">3D Printing</span>
+            <span class="project-tag">Arduino</span>
+            <span class="project-tag">Team Project</span>
+            <span class="project-tag">Cornerstone Design</span>
+          </div>
+          <!-- ✏️ UPDATE: Edit title/description freely -->
+          <div class="project-title">Autonomous Catapult Robot</div>
+          <div class="project-subtitle">Cornerstone Design — MECH 1201 · 2026</div>
+          <p class="project-desc">
+            Designed and built an automated projectile delivery system integrated onto an Arduino ELEGOO Smart Robot Car. The system was required to autonomously navigate an obstacle course, reload, and deliver three ping pong balls into a target 3 meters away — all within the width of the chassis.<br><br>
+            I designed the snail-cam mechanism and launcher assembly in Autodesk Inventor, then coordinated 3D printing of both parts through the university's fabrication facility. The snail cam converts continuous rotary motor output into a repeatable linear compression-and-release cycle, enabling autonomous reloading without human intervention.<br><br>
+            The project challenged our team to balance mechanical design constraints, weight distribution, center-of-gravity management, and embedded systems integration simultaneously.
+          </p>
+          <div class="project-specs">
+            <div class="spec"><div class="spec-label">Role</div><div class="spec-value">Mechanism Design Lead</div></div>
+            <div class="spec"><div class="spec-label">Parts Designed</div><div class="spec-value">Snail Cam + Launcher</div></div>
+            <div class="spec"><div class="spec-label">Manufacturing</div><div class="spec-value">FDM 3D Print</div></div>
+            <div class="spec"><div class="spec-label">Software</div><div class="spec-value">Autodesk Inventor</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PROJECT 2 ══
+           ✏️ HOW TO ADD YOUR IMAGE:
+           1. Take a clean screenshot of your AutoCAD assembly drawing
+           2. Save it as: autocad-assembly.png in the same folder
+           3. Replace the placeholder block with:
+              <img src="autocad-assembly.png" alt="Linear slide assembly drawing">
+      -->
+      <div class="project-card">
+        <div class="project-visual" style="background:#111825">
+          <div class="project-num">02</div>
+
+          <!-- REPLACE THIS BLOCK with <img src="autocad-assembly.png" alt="..."> -->
+          <div class="placeholder">
+            <div class="cad-frame">
+              <div class="cad-corner tl"></div><div class="cad-corner tr"></div>
+              <div class="cad-corner bl"></div><div class="cad-corner br"></div>
+              <div class="cad-title">LINEAR SLIDE ASSEMBLY</div>
+              <div class="cad-label">Add autocad-assembly.png here<br>See comment above</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-tag">AutoCAD</span>
+            <span class="project-tag">Technical Drawing</span>
+            <span class="project-tag">GD&amp;T</span>
+            <span class="project-tag">Individual Project</span>
+            <span class="project-tag">Eng. Graphics 1102</span>
+          </div>
+          <div class="project-title">Linear Slide Assembly</div>
+          <div class="project-subtitle">Engineering Graphics — MECH 1102 · 2025</div>
+          <p class="project-desc">
+            Independently designed a complete 7-component linear slide mechanism in AutoCAD as the final project for Engineering Graphics. Every part — including the bottom plate, guide shafts, top plate, pillow blocks, PTFE bearings, and socket head cap screws — was individually modeled and fully documented.<br><br>
+            The deliverable included a fully annotated assembly drawing with multi-view projections, a Bill of Materials specifying part numbers, quantities, and materials, and a detailed part drawing for the 10-24 UNC Socket Head Cap Screw dimensioned to 1:1 scale.
+          </p>
+          <div class="project-specs">
+            <div class="spec"><div class="spec-label">Parts</div><div class="spec-value">7 (All self-designed)</div></div>
+            <div class="spec"><div class="spec-label">Materials</div><div class="spec-value">Al · 303 SS · PTFE · Steel</div></div>
+            <div class="spec"><div class="spec-label">Drawing Type</div><div class="spec-value">Assembly + Detail</div></div>
+            <div class="spec"><div class="spec-label">Software</div><div class="spec-value">AutoCAD</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PROJECT 3 ══
+           ✏️ HOW TO ADD YOUR IMAGE:
+           Recreate the Lego brick in Inventor, screenshot it nicely,
+           save as lego-brick.png, then replace the placeholder below.
+      -->
+      <div class="project-card">
+        <div class="project-visual" style="background:#121822">
+          <div class="project-num">03</div>
+
+          <!-- REPLACE THIS BLOCK with <img src="lego-brick.png" alt="..."> -->
+          <div class="placeholder">
+            <div class="cad-frame">
+              <div class="cad-corner tl"></div><div class="cad-corner tr"></div>
+              <div class="cad-corner bl"></div><div class="cad-corner br"></div>
+              <div class="cad-title">PARAMETRIC LEGO BRICK</div>
+              <div class="cad-label">Recreate in Inventor &amp; add lego-brick.png<br>See comment above</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-tag">Autodesk Inventor</span>
+            <span class="project-tag">Parametric Modeling</span>
+            <span class="project-tag">iLogic</span>
+            <span class="project-tag">Self-Initiated</span>
+          </div>
+          <div class="project-title">Parametric Lego Brick Model</div>
+          <div class="project-subtitle">Self-Directed — Autodesk Inventor · Grade 12</div>
+          <p class="project-desc">
+            Built a fully parametric Lego brick model in Autodesk Inventor using iLogic-driven design tables. A dropdown menu allowed selection of any standard Lego brick size — the model would automatically recalculate stud count, wall geometry, internal tube placement, part number, and colour to match Lego's real-world dimensional standards.<br><br>
+            This project introduced me to parametric design thinking — the same principle used in industrial product families and variant-based manufacturing. Understanding that a single master model can drive an entire product family is foundational to how automotive OEMs manage part variants at scale.
+          </p>
+          <div class="project-specs">
+            <div class="spec"><div class="spec-label">Type</div><div class="spec-value">Parametric / iLogic</div></div>
+            <div class="spec"><div class="spec-label">Driver</div><div class="spec-value">Self-initiated</div></div>
+            <div class="spec"><div class="spec-label">Key Concept</div><div class="spec-value">Design Variants</div></div>
+            <div class="spec"><div class="spec-label">Software</div><div class="spec-value">Autodesk Inventor</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ADD NEW PROJECT ══
+           ✏️ Copy the entire project-card block above and paste it here.
+           Update the number (04), image, tags, title, description, specs.
+      -->
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════
+     SKILLS
+     ════════════════════════════════ -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">03 — Skills</div>
+    <div class="section-title">Technical Capabilities</div>
+    <!-- ✏️ UPDATE: Change skill-fill widths (0–100%) as proficiency grows -->
+    <!-- ✏️ UPDATE: Add new skill-block entries as you learn new tools -->
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-icon">CAD</div>
+        <div class="skill-name">AutoCAD</div>
+        <div class="skill-desc">2D drafting, multi-view drawings, BOM creation, annotated assemblies, title blocks</div>
+        <div class="skill-level"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">INV</div>
+        <div class="skill-name">Autodesk Inventor</div>
+        <div class="skill-desc">3D parametric modeling, iLogic, assembly design, part design for manufacturing</div>
+        <div class="skill-level"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">3DP</div>
+        <div class="skill-name">3D Printing</div>
+        <div class="skill-desc">FDM design-for-print, part tolerancing, on-campus fabrication coordination</div>
+        <div class="skill-level"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">WLD</div>
+        <div class="skill-name">Welding &amp; Cutting</div>
+        <div class="skill-desc">MIG welding, oxy-acetylene cutting, plasma cutting — certified through auto shop program</div>
+        <div class="skill-level"><div class="skill-fill" style="width:55%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">AUT</div>
+        <div class="skill-name">Automotive Systems</div>
+        <div class="skill-desc">Brakes, suspension, drivetrain, engine fundamentals, OBD-II diagnostics, hoist operation</div>
+        <div class="skill-level"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">ARD</div>
+        <div class="skill-name">Arduino / Electronics</div>
+        <div class="skill-desc">Servo &amp; DC motor control, sensor integration, circuit wiring, embedded C programming</div>
+        <div class="skill-level"><div class="skill-fill" style="width:45%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">DRW</div>
+        <div class="skill-name">Technical Drawing</div>
+        <div class="skill-desc">Engineering drawing standards, multi-view projections, dimensioning, GD&amp;T fundamentals</div>
+        <div class="skill-level"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">MFG</div>
+        <div class="skill-name">Manufacturing Awareness</div>
+        <div class="skill-desc">Material selection, DFM principles, fastener standards, tolerance awareness</div>
+        <div class="skill-level"><div class="skill-fill" style="width:50%"></div></div>
+      </div>
+      <!-- ✏️ ADD: Copy a skill-block here when you learn SolidWorks, MATLAB, etc. -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════
+     EXPERIENCE
+     ════════════════════════════════ -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">04 — Background</div>
+    <div class="section-title">Experience &amp; Certifications</div>
+    <div class="exp-grid">
+      <div>
+        <!-- ✏️ UPDATE: Add co-op experience here once you land one -->
+        <div class="exp-item">
+          <div class="exp-line">
+            <div class="exp-dot"></div>
+            <div class="exp-connector"></div>
+          </div>
+          <div class="exp-body">
+            <div class="exp-period">2024 – Present</div>
+            <div class="exp-role">Mechanical Engineering Student</div>
+            <div class="exp-org">University of Windsor — Windsor, ON</div>
+            <ul class="exp-desc">
+              <li>Completed Engineering Graphics (MECH 1102) — final project: 7-part assembly in AutoCAD</li>
+              <li>Completed Cornerstone Design (MECH 1201) — led mechanism design for autonomous catapult robot</li>
+              <li>Coursework: Calculus, Physics, Chemistry, Engineering Computing</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-line">
+            <div class="exp-dot"></div>
+            <div class="exp-connector"></div>
+          </div>
+          <div class="exp-body">
+            <div class="exp-period">2022 – 2024</div>
+            <div class="exp-role">Auto Shop — Trades Program</div>
+            <div class="exp-org">High School · Grades 11 &amp; 12</div>
+            <ul class="exp-desc">
+              <li>Trained in MIG welding, oxy-acetylene cutting, and plasma cutting</li>
+              <li>Performed brake jobs, tie rod repairs, and minor transmission service</li>
+              <li>Operated two-post and ramp hoists following full safety checklists</li>
+              <li>Learned engine fundamentals, diagnostic tools, and general vehicle maintenance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-line">
+            <div class="exp-dot"></div>
+            <div class="exp-connector"></div>
+          </div>
+          <div class="exp-body">
+            <div class="exp-period">Ongoing</div>
+            <div class="exp-role">Personal Automotive Practice</div>
+            <div class="exp-org">Self-directed</div>
+            <ul class="exp-desc">
+              <li>Oil changes, tire mounting, balancing, and rotation</li>
+              <li>OBD-II scan tool diagnostics and fault clearing</li>
+              <li>Regular attendance at Ontario automotive shows and events</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✏️ UPDATE: Add certifications as you earn them (CSWA, First Aid, etc.) -->
+      <div class="exp-right">
+        <div class="certs-title">Certifications &amp; Training</div>
+        <div class="cert-item">
+          <div class="cert-badge">WHM</div>
+          <div>
+            <div class="cert-name">WHMIS 2015 Certification</div>
+            <div class="cert-issuer">Workplace Hazardous Materials Information System</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge">WLD</div>
+          <div>
+            <div class="cert-name">MIG &amp; Oxy-Acetylene Welding</div>
+            <div class="cert-issuer">High School Trades Program — Grades 11–12</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge">HST</div>
+          <div>
+            <div class="cert-name">Vehicle Hoist Safety Certification</div>
+            <div class="cert-issuer">Two-Post &amp; Ramp Hoist — Approved Operator</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge">CAD</div>
+          <div>
+            <div class="cert-name">AutoCAD — Technical Drawing</div>
+            <div class="cert-issuer">University of Windsor — MECH 1102</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge">INV</div>
+          <div>
+            <div class="cert-name">Autodesk Inventor — 3D Modeling</div>
+            <div class="cert-issuer">Self-directed + University coursework</div>
+          </div>
+        </div>
+        <!-- ✏️ ADD: <div class="cert-item">...</div> for new certs -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════
+     CONTACT
+     ════════════════════════════════ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">05 — Contact</div>
+    <div class="section-title">Get In Touch</div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">I am actively seeking co-op and internship opportunities in automotive, manufacturing, and mechanical design engineering. If you're looking for a motivated, hands-on engineering student in the Windsor–Detroit corridor, I'd love to connect.</p>
+        <div class="contact-links">
+          <!-- ✏️ UPDATE: Replace with your real email -->
+          <a href="mailto:YOUR_EMAIL@uwindsor.ca" class="contact-link">
+            <span class="contact-link-icon">Email</span>
+            <span>YOUR_EMAIL@uwindsor.ca</span>
+          </a>
+          <!-- ✏️ UPDATE: Replace with your real LinkedIn URL -->
+          <a href="https://linkedin.com/in/YOUR-LINKEDIN" class="contact-link" target="_blank">
+            <span class="contact-link-icon">LinkedIn</span>
+            <span>linkedin.com/in/YOUR-LINKEDIN</span>
+          </a>
+          <a class="contact-link">
+            <span class="contact-link-icon">Location</span>
+            <span>Windsor, Ontario, Canada</span>
+          </a>
+          <!-- ✏️ UPDATE: Replace href with path to your resume PDF once ready -->
+          <a href="resume.pdf" class="contact-link" target="_blank">
+            <span class="contact-link-icon">Resume</span>
+            <span>Download PDF Resume →</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <label>Name</label>
+        <input type="text" placeholder="Your name">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com">
+        <label>Company / Organization</label>
+        <input type="text" placeholder="Magna, Ford, Stellantis...">
+        <label>Message</label>
+        <textarea placeholder="Co-op opportunity, question, or note..."></textarea>
+        <a href="#" class="btn-primary">Send Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Kabir Gohgari — Mechanical Engineering Portfolio</div>
+    <div class="footer-tag">University of Windsor · Windsor, ON</div>
+  </div>
+</footer>
+
+</body>
+</html>
